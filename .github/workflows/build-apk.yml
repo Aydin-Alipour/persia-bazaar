@@ -39,7 +39,7 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync android
 
-      - - name: Build APK
+      - name: Build APK
         run: |
           cd android
           ls -la
