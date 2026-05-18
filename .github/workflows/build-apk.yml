@@ -44,9 +44,10 @@ jobs:
 
       - name: Fix Gradle repositories
         run: |
-          sed -i 's|https://maven.aliyun.com/repository/central|https://repo1.maven.org/maven2|g' android/build.gradle
-          sed -i 's|https://maven.aliyun.com/repository/google|https://maven.google.com|g' android/build.gradle
-          sed -i 's|https://maven.aliyun.com/repository/public|https://repo1.maven.org/maven2|g' android/build.gradle
+          find android -name "*.gradle" -exec sed -i 's|https://maven.aliyun.com/repository/central|https://repo1.maven.org/maven2|g' {} \;
+          find android -name "*.gradle" -exec sed -i 's|https://maven.aliyun.com/repository/google|https://maven.google.com|g' {} \;
+          find android -name "*.gradle" -exec sed -i 's|https://maven.aliyun.com/repository/public|https://repo1.maven.org/maven2|g' {} \;
+          find android -name "*.gradle" -exec sed -i 's|https://maven.aliyun.com/repository/jcenter|https://jcenter.bintray.com|g' {} \;
 
       - name: Fix duplicate splash resource
         run: rm android/app/src/main/res/drawable/splash.png
