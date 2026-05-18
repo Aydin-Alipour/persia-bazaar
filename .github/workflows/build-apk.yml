@@ -42,9 +42,9 @@ jobs:
       - name: Build APK
         run: |
           cd android
-          ls -la
-          chmod +x gradlew || true
-          bash gradlew assembleDebug
+          sed -i 's/\r//' gradlew
+          chmod +x gradlew
+          ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
